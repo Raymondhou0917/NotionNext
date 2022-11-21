@@ -17,7 +17,7 @@ const BlogPostCard = ({ post, showSummary }) => {
           <Link href={`${BLOG.SUB_PATH}/${post.slug}`} passHref>
             <a
               className={`replace cursor-pointer hover:underline text-2xl ${showPreview ? 'text-center' : ''
-                } leading-tight text-gray-700 dark:text-gray-100 hover:text-indigo-700 dark:hover:text-indigo-400`}
+                } leading-tight text-gray-700 dark:text-gray-100 hover:text-teal-700 dark:hover:text-teal-400`}
             >
               {post.title}
             </a>
