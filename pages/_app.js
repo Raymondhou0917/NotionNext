@@ -25,6 +25,7 @@ import { ThemeSwitch } from '@/components/ThemeSwitch'
 import { Fireworks } from '@/components/Fireworks'
 import React from 'react'
 import { loadExternalResource } from '@/lib/utils'
+import Head from 'next/head'
 
 const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
@@ -36,7 +37,7 @@ const Messenger = dynamic(() => import('@/components/FacebookMessenger'), {
   ssr: false
 })
 
-import Head from 'next/head';
+
 
 const MyApp = ({ Component, pageProps }) => {
   // 外部插件
