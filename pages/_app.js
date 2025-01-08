@@ -36,18 +36,22 @@ const Messenger = dynamic(() => import('@/components/FacebookMessenger'), {
   ssr: false
 })
 
+import Head from 'next/head';
+
 const MyApp = ({ Component, pageProps }) => {
   // 外部插件
-  const externalPlugins = <>
-        {JSON.parse(BLOG.THEME_SWITCH) && <ThemeSwitch />}
-        {JSON.parse(BLOG.DEBUG) && <DebugPanel />}
-        {BLOG.ANALYTICS_ACKEE_TRACKER && <Ackee />}
-        {BLOG.ANALYTICS_GOOGLE_ID && <Gtag />}
-        {JSON.parse(BLOG.ANALYTICS_BUSUANZI_ENABLE) && <Busuanzi />}
-        {BLOG.ADSENSE_GOOGLE_ID && <GoogleAdsense />}
-        {BLOG.FACEBOOK_APP_ID && BLOG.FACEBOOK_PAGE_ID && <Messenger />}
-        {JSON.parse(BLOG.FIREWORKS) && <Fireworks/>}
+  const externalPlugins = (
+    <>
+      {JSON.parse(BLOG.THEME_SWITCH) && <ThemeSwitch />}
+      {JSON.parse(BLOG.DEBUG) && <DebugPanel />}
+      {BLOG.ANALYTICS_ACKEE_TRACKER && <Ackee />}
+      {BLOG.ANALYTICS_GOOGLE_ID && <Gtag />}
+      {JSON.parse(BLOG.ANALYTICS_BUSUANZI_ENABLE) && <Busuanzi />}
+      {BLOG.ADSENSE_GOOGLE_ID && <GoogleAdsense />}
+      {BLOG.FACEBOOK_APP_ID && BLOG.FACEBOOK_PAGE_ID && <Messenger />}
+      {JSON.parse(BLOG.FIREWORKS) && <Fireworks />}
     </>
+  )
 
   // 延迟加载fontAwesome
   React.useEffect(() => {
@@ -55,10 +59,14 @@ const MyApp = ({ Component, pageProps }) => {
   }, [])
 
   return (
-        <GlobalContextProvider>
-            {externalPlugins}
-            <Component {...pageProps} />
-        </GlobalContextProvider>
+    <GlobalContextProvider>
+      <Head>
+        {/* 添加 Meta 標籤來阻止搜索引擎索引 */}
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+      {externalPlugins}
+      <Component {...pageProps} />
+    </GlobalContextProvider>
   )
 }
 
