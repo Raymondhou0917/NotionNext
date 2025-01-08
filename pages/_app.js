@@ -63,6 +63,8 @@ const MyApp = ({ Component, pageProps }) => {
       <Head>
         {/* 添加 Meta 標籤來阻止搜索引擎索引 */}
         <meta name="robots" content="noindex, nofollow" />
+        {/* 添加 Canonical 標籤 */}
+        <link rel="canonical" href="https://raymondhouch.com/" />
       </Head>
       {externalPlugins}
       <Component {...pageProps} />
