@@ -1,3 +1,6 @@
+/* eslint-disable import/first */
+/* eslint-disable semi */
+
 import BLOG from 'blog.config'
 import 'animate.css'
 import '@/styles/globals.css'
@@ -36,8 +39,6 @@ const GoogleAdsense = dynamic(() => import('@/components/GoogleAdsense'), {
 const Messenger = dynamic(() => import('@/components/FacebookMessenger'), {
   ssr: false
 })
-
-
 
 const MyApp = ({ Component, pageProps }) => {
   // 外部插件
